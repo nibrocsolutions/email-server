@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Your mail, at home — a picture guide</title>
+<style>
+  @font-face {
+    font-family: "Inter";
+    src: url("file:///usr/share/fonts/truetype/macos/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("file:///usr/share/fonts/truetype/macos/Inter-Medium.ttf") format("truetype");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("file:///usr/share/fonts/truetype/macos/Inter-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("file:///usr/share/fonts/truetype/macos/Inter-Bold.ttf") format("truetype");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "LibSerif";
+    src: url("file:///usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "LibSerif";
+    src: url("file:///usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf") format("truetype");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "LibSerif";
+    src: url("file:///usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  :root {
+    --ink: #1c1915;
+    --muted: #5e574c;
+    --faint: #8a8175;
+    --paper: #f4efe6;
+    --card: #fffdf8;
+    --line: #e3dacb;
+    --green: #1e4d3a;
+    --green-deep: #16392b;
+    --green-soft: #e5f0ea;
+    --brick: #8c4a32;
+    --brick-soft: #f6e6dc;
+    --stamp: #b8502e;
+    --gold: #f3e2b8;
+    --cream: #f7f1e6;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: var(--ink);
+    font-family: Inter, "Liberation Sans", sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: letter; margin: 0; }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+    padding: 0.52in 0.58in 0.58in;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .page * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .foot {
+    position: absolute;
+    left: 0.58in;
+    right: 0.58in;
+    bottom: 0.28in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+  .cover .foot { color: #d5e4db; }
+
+  h1, h2, h3 { font-family: LibSerif, "Liberation Serif", serif; font-weight: 700; margin: 0; }
+  p { margin: 0; }
+  .kicker {
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--stamp);
+    margin-bottom: 0.08in;
+  }
+  h2 { font-size: 26pt; line-height: 1.05; letter-spacing: -0.015em; }
+  .lead { margin-top: 0.12in; color: var(--muted); font-size: 11.5pt; line-height: 1.4; max-width: 7.2in; }
+  .section { margin-top: 0.22in; }
+
+  svg.ico { display: block; }
+
+  /* Cover */
+  .cover {
+    background: var(--green-deep);
+    color: #f6f1e8;
+    padding: 0.62in 0.62in 0.5in;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover .kicker { color: #e7b19a; }
+  .cover h1 {
+    font-size: 48pt;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #f6f1e8;
+    max-width: 6.6in;
+  }
+  .cover .deck {
+    margin-top: 0.18in;
+    font-family: LibSerif, serif;
+    font-style: italic;
+    font-size: 14pt;
+    line-height: 1.35;
+    color: #d7e6dd;
+    max-width: 6.4in;
+  }
+  .poster {
+    margin-top: 0.42in;
+    display: grid;
+    grid-template-columns: 1.85in 0.95in 1.85in 0.95in 1.85in;
+    align-items: stretch;
+    gap: 0;
+  }
+  .poster-card {
+    background: #f6f1e8;
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 0.22in 0.12in 0.2in;
+    min-height: 3.15in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .poster-card b {
+    display: block;
+    margin-top: 0.08in;
+    font-size: 12pt;
+    font-family: LibSerif, serif;
+  }
+  .poster-card span {
+    display: block;
+    margin-top: 0.04in;
+    font-size: 8.5pt;
+    line-height: 1.3;
+    color: var(--muted);
+  }
+  .poster-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #d7e6dd;
+    font-size: 8pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 0.04in;
+    line-height: 1.25;
+  }
+  .facts {
+    margin-top: 0.32in;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.14in;
+  }
+  .cover-quote {
+    margin-top: auto;
+    margin-bottom: 0.28in;
+    font-family: LibSerif, serif;
+    font-size: 16.5pt;
+    line-height: 1.35;
+    color: #f3efe6;
+    max-width: 6.5in;
+  }
+  .fact {
+    border-top: 1.5px solid #3e6b58;
+    padding-top: 0.1in;
+  }
+  .fact .n {
+    font-family: LibSerif, serif;
+    font-size: 16pt;
+    color: #e7b19a;
+  }
+  .fact p { font-size: 10pt; line-height: 1.35; color: #e7f0eb; margin-top: 0.04in; }
+
+  /* Shared cards */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.16in; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.12in; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.14in 0.14in 0.15in;
+  }
+  .card h3 { font-size: 13pt; line-height: 1.15; margin: 0.06in 0 0.05in; }
+  .card p, .small { font-size: 9.5pt; color: var(--muted); line-height: 1.35; }
+  .card .role {
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stamp);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.14in;
+    margin-top: 0.18in;
+  }
+  .pair .card h3 { font-size: 14pt; }
+  .mini-steps { margin-top: 0.08in; display: flex; flex-direction: column; gap: 0.08in; }
+  .mini-step { display: grid; grid-template-columns: 0.28in 1fr; gap: 0.08in; align-items: start; }
+  .bubble {
+    width: 0.26in;
+    height: 0.26in;
+    border-radius: 50%;
+    background: var(--green);
+    color: #f6f1e8;
+    font-size: 9pt;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bubble.brick { background: var(--brick); }
+
+  .address {
+    margin-top: 0.2in;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.16in 0.18in 0.18in;
+  }
+  .address h3 { font-size: 14pt; margin-bottom: 0.1in; }
+  .addr-row { display: flex; align-items: stretch; gap: 0.08in; }
+  .addr-chip {
+    background: var(--green-soft);
+    border-radius: 10px;
+    padding: 0.1in 0.12in;
+    flex: 1;
+  }
+  .addr-chip.brick { background: var(--brick-soft); }
+  .addr-chip .who { font-size: 8pt; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); }
+  .addr-chip.brick .who { color: var(--brick); }
+  .addr-chip .big {
+    font-family: LibSerif, serif;
+    font-size: 16pt;
+    margin-top: 0.02in;
+  }
+  .addr-chip p { font-size: 9pt; color: var(--muted); margin-top: 0.02in; }
+  .at {
+    display: flex;
+    align-items: center;
+    font-family: LibSerif, serif;
+    font-size: 20pt;
+    color: var(--faint);
+    padding: 0 0.02in;
+  }
+  .addr-note { margin-top: 0.1in; font-size: 9.5pt; color: var(--muted); }
+
+  .cast {
+    margin-top: 0.16in;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 0.1in;
+  }
+  .cast .card { display: flex; gap: 0.1in; align-items: center; padding: 0.1in 0.12in; }
+  .cast b { display: block; font-size: 10.5pt; }
+  .cast p { font-size: 8.5pt; }
+
+  .jobs { margin-top: 0.18in; display: grid; grid-template-columns: 1fr 1fr; gap: 0.14in; }
+  .job {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.16in;
+    display: grid;
+    grid-template-columns: 0.85in 1fr;
+    gap: 0.12in;
+    align-items: center;
+    min-height: 1.7in;
+  }
+  .job h3 { font-size: 14.5pt; margin-bottom: 0.04in; }
+  .job p { font-size: 10pt; color: var(--muted); }
+  .tag {
+    display: inline-block;
+    margin-top: 0.06in;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .scene {
+    margin-top: 0.16in;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.16in 0.16in 0.14in;
+    display: grid;
+    grid-template-columns: 1.4in 0.7in 1.5in 0.7in 1.5in;
+    align-items: center;
+  }
+  .scene-label { text-align: center; }
+  .scene-label b { display: block; margin-top: 0.04in; font-size: 10pt; }
+  .scene-label span { display: block; font-size: 8pt; color: var(--muted); margin-top: 0.02in; }
+  .wall {
+    height: 1.15in;
+    border-left: 3px solid var(--stamp);
+    margin: 0 auto;
+    position: relative;
+  }
+  .wall i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card);
+    color: var(--stamp);
+    font-style: normal;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.04in 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .reasons { margin-top: 0.14in; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.1in; }
+  .reason { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 0.12in; }
+  .reason .n { font-family: LibSerif, serif; color: var(--stamp); font-size: 16pt; }
+  .reason h3 { font-size: 12pt; margin: 0.02in 0 0.04in; }
+  .reason p { font-size: 9pt; color: var(--muted); }
+
+  .checks { margin-top: 0.14in; }
+  .checks h3 { font-size: 13pt; margin-bottom: 0.08in; }
+  .check {
+    display: grid;
+    grid-template-columns: 0.32in 1.35in 1fr;
+    gap: 0.08in;
+    align-items: start;
+    padding: 0.06in 0;
+    border-top: 1px solid var(--line);
+  }
+  .check b { font-size: 10pt; }
+  .check p { font-size: 9pt; color: var(--muted); }
+
+  .map { margin-top: 0.14in; }
+  .station {
+    display: grid;
+    grid-template-columns: 0.95in 1fr;
+    gap: 0.14in;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.1in 0.16in;
+  }
+  .station.home { background: var(--green-soft); border-color: #c9ddd2; }
+  .station.desk { background: var(--brick-soft); border-color: #ecd2c4; }
+  .station h3 { font-size: 14pt; }
+  .station p { font-size: 10pt; color: var(--muted); margin-top: 0.02in; }
+  .station .name {
+    display: inline-block;
+    margin-top: 0.04in;
+    font-family: "Cascadia Mono", "Liberation Mono", monospace;
+    font-size: 9.5pt;
+    background: rgba(255,255,255,0.7);
+    padding: 0.02in 0.06in;
+    border-radius: 4px;
+  }
+  .connector {
+    display: flex;
+    align-items: center;
+    gap: 0.1in;
+    margin: 0.04in 0 0.04in 0.42in;
+    color: var(--muted);
+    font-size: 9.5pt;
+  }
+  .connector:before {
+    content: "";
+    width: 0;
+    height: 0.28in;
+    border-left: 2px dashed var(--green);
+  }
+  .remember {
+    margin-top: 0.16in;
+    background: var(--green);
+    color: #f4efe6;
+    border-radius: 12px;
+    padding: 0.14in 0.16in;
+  }
+  .remember b { font-family: LibSerif, serif; font-size: 12.5pt; font-weight: 700; }
+  .remember p { margin-top: 0.04in; font-size: 10pt; color: #e5f0ea; }
+
+  .steps { margin-top: 0.12in; }
+  .step {
+    display: grid;
+    grid-template-columns: 0.34in 0.78in 1fr;
+    gap: 0.1in;
+    align-items: center;
+    padding: 0.07in 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-child { border-bottom: 0; }
+  .num {
+    width: 0.32in;
+    height: 0.32in;
+    border-radius: 50%;
+    background: var(--stamp);
+    color: white;
+    font-family: LibSerif, serif;
+    font-size: 13pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step h3 { font-size: 12.5pt; }
+  .step p { font-size: 10pt; color: var(--muted); margin-top: 0.02in; }
+  .picbox {
+    width: 0.72in;
+    height: 0.72in;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .doors { margin-top: 0.16in; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.12in; }
+  .door { text-align: center; }
+  .arch {
+    height: 2.15in;
+    border: 3px solid var(--ink);
+    border-bottom-width: 3px;
+    border-radius: 1.1in 1.1in 10px 10px;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.06in;
+  }
+  .arch.green { background: var(--green-soft); border-color: var(--green); }
+  .arch.brick { background: var(--brick-soft); border-color: var(--brick); }
+  .arch .port {
+    font-family: LibSerif, serif;
+    font-size: 22pt;
+    line-height: 1;
+  }
+  .door h3 { font-size: 13pt; margin-top: 0.1in; }
+  .door p { font-size: 9.5pt; color: var(--muted); margin-top: 0.04in; text-align: left; }
+  .callout {
+    margin-top: 0.16in;
+    border-left: 3px solid var(--green);
+    padding: 0.02in 0 0.02in 0.14in;
+  }
+  .callout b { font-family: LibSerif, serif; font-size: 12pt; }
+  .callout p { margin-top: 0.04in; color: var(--muted); font-size: 10.5pt; }
+
+  .words { margin-top: 0.14in; display: grid; grid-template-columns: 1fr 1fr; gap: 0.1in 0.16in; }
+  .word {
+    display: grid;
+    grid-template-columns: 0.52in 1fr;
+    gap: 0.08in;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.08in 0.1in;
+    min-height: 0.78in;
+  }
+  .word b { display: block; font-size: 10.5pt; }
+  .word p { font-size: 8.7pt; color: var(--muted); margin-top: 0.02in; }
+
+  .split { margin-top: 0.14in; display: grid; grid-template-columns: 1fr 1fr; gap: 0.14in; }
+  .place {
+    border-radius: 14px;
+    padding: 0.16in 0.16in 0.14in;
+    min-height: 3.15in;
+    display: flex;
+    flex-direction: column;
+  }
+  .place-art {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.12in;
+    padding-top: 0.12in;
+  }
+  .place.home { background: var(--green-soft); }
+  .place.desk { background: var(--brick-soft); }
+  .place h3 { font-size: 18pt; margin: 0.06in 0 0.08in; }
+  .place li { margin: 0.06in 0; font-size: 10.5pt; color: var(--ink); }
+  .place ul { margin: 0; padding-left: 0.18in; }
+  .place .ey { font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .helpers { margin-top: 0.14in; }
+  .helpers h3 { font-size: 13pt; margin-bottom: 0.08in; }
+  .helper-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.08in; }
+  .helper { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.1in; }
+  .helper b { display: block; font-family: "Cascadia Mono", ui-monospace, monospace; font-size: 9pt; }
+  .helper span { display: block; font-family: LibSerif, serif; font-size: 11pt; margin: 0.03in 0; }
+  .helper p { font-size: 8.5pt; color: var(--muted); }
+  .diskrow { margin-top: 0.12in; display: grid; grid-template-columns: 1fr 1fr; gap: 0.1in; }
+  .disk {
+    display: grid;
+    grid-template-columns: 0.7in 1fr;
+    gap: 0.1in;
+    align-items: center;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    padding: 0.1in;
+  }
+  .disk h3 { font-size: 12pt; }
+  .disk p { font-size: 9pt; color: var(--muted); margin-top: 0.02in; }
+
+  .order { margin-top: 0.1in; }
+  .ord {
+    display: grid;
+    grid-template-columns: 0.36in 1fr;
+    gap: 0.1in;
+    padding: 0.065in 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .ord .num { width: 0.32in; height: 0.32in; font-size: 12pt; }
+  .ord b { font-size: 11pt; }
+  .ord p { font-size: 9.5pt; color: var(--muted); margin-top: 0.01in; }
+
+  .qs { margin-top: 0.12in; display: flex; flex-direction: column; gap: 0.08in; }
+  .q {
+    display: grid;
+    grid-template-columns: 0.36in 1fr;
+    gap: 0.1in;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.1in 0.12in;
+    align-items: center;
+  }
+  .q h3 { font-size: 12.5pt; }
+  .q p { font-size: 9.5pt; color: var(--muted); margin-top: 0.02in; }
+  .later { margin-top: 0.14in; }
+  .later h3 { font-size: 13pt; margin-bottom: 0.06in; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.08in; }
+  .chip {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.05in 0.12in;
+    font-size: 9.5pt;
+  }
+  .close {
+    margin-top: 0.16in;
+    background: var(--green-deep);
+    color: #f6f1e8;
+    border-radius: 14px;
+    padding: 0.18in 0.2in;
+  }
+  .close h3 { font-size: 16pt; color: #f6f1e8; }
+  .close p { margin-top: 0.06in; font-size: 11pt; color: #d7e6dd; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-house" viewBox="0 0 80 80">
+      <polygon points="40,8 8,36 18,36 18,70 62,70 62,36 72,36" fill="#1e4d3a"/>
+      <rect x="34" y="48" width="12" height="22" fill="#f6f1e8"/>
+      <rect x="24" y="42" width="10" height="8" fill="#f3e2b8"/>
+      <rect x="46" y="42" width="10" height="8" fill="#f3e2b8"/>
+    </symbol>
+    <symbol id="i-pi" viewBox="0 0 80 80">
+      <rect x="10" y="22" width="60" height="40" rx="5" fill="#1e4d3a"/>
+      <rect x="16" y="30" width="20" height="14" rx="2" fill="#143528"/>
+      <rect x="40" y="32" width="9" height="9" fill="#143528"/>
+      <rect x="52" y="32" width="9" height="9" fill="#143528"/>
+      <g fill="#f3e2b8">
+        <rect x="18" y="16" width="3" height="8"/><rect x="24" y="16" width="3" height="8"/>
+        <rect x="30" y="16" width="3" height="8"/><rect x="36" y="16" width="3" height="8"/>
+        <rect x="42" y="16" width="3" height="8"/><rect x="48" y="16" width="3" height="8"/>
+      </g>
+      <rect x="64" y="34" width="10" height="5" rx="1" fill="#f6f1e8"/>
+      <rect x="64" y="42" width="10" height="5" rx="1" fill="#f6f1e8"/>
+    </symbol>
+    <symbol id="i-building" viewBox="0 0 80 80">
+      <rect x="16" y="12" width="48" height="58" fill="#8c4a32"/>
+      <g fill="#f3e2b8">
+        <rect x="24" y="20" width="8" height="7"/><rect x="36" y="20" width="8" height="7"/><rect x="48" y="20" width="8" height="7"/>
+        <rect x="24" y="32" width="8" height="7"/><rect x="36" y="32" width="8" height="7"/><rect x="48" y="32" width="8" height="7"/>
+        <rect x="24" y="44" width="8" height="7"/><rect x="48" y="44" width="8" height="7"/>
+      </g>
+      <rect x="35" y="50" width="10" height="20" fill="#1c1915"/>
+    </symbol>
+    <symbol id="i-envelope" viewBox="0 0 80 80">
+      <rect x="8" y="22" width="64" height="40" rx="4" fill="#f4e1c4" stroke="#1c1915" stroke-width="2.5"/>
+      <path d="M10 24 L40 46 L70 24" fill="none" stroke="#1c1915" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="i-person" viewBox="0 0 80 80">
+      <circle cx="40" cy="24" r="12" fill="#1c1915"/>
+      <path d="M18 70 C18 46 28 40 40 40 C52 40 62 46 62 70 Z" fill="#1e4d3a"/>
+    </symbol>
+    <symbol id="i-sam" viewBox="0 0 80 80">
+      <circle cx="40" cy="24" r="12" fill="#1c1915"/>
+      <path d="M18 70 C18 46 28 40 40 40 C52 40 62 46 62 70 Z" fill="#8c4a32"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 80 80">
+      <rect x="26" y="8" width="28" height="64" rx="6" fill="#1c1915"/>
+      <rect x="30" y="16" width="20" height="42" rx="2" fill="#f6f1e8"/>
+      <rect x="34" y="30" width="12" height="9" fill="#1e4d3a"/>
+      <path d="M34 32 L40 37 L46 32" fill="none" stroke="#f6f1e8" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 80 80">
+      <rect x="14" y="12" width="52" height="56" rx="3" fill="#1e4d3a"/>
+      <rect x="24" y="18" width="34" height="44" fill="#fffdf8"/>
+      <path d="M30 28 H52 M30 36 H52 M30 44 H46" stroke="#c9bfb0" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="26" fill="#e5f0ea" stroke="#1e4d3a" stroke-width="2.5"/>
+      <ellipse cx="40" cy="40" rx="12" ry="26" fill="none" stroke="#1e4d3a" stroke-width="2"/>
+      <path d="M16 40 H64 M22 28 H58 M22 52 H58" fill="none" stroke="#1e4d3a" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-tunnel" viewBox="0 0 80 80">
+      <rect x="8" y="26" width="64" height="28" rx="14" fill="none" stroke="#1e4d3a" stroke-width="3" stroke-dasharray="5 4"/>
+      <rect x="30" y="32" width="20" height="14" rx="2" fill="#f4e1c4" stroke="#1c1915" stroke-width="1.5"/>
+      <path d="M31 33 L40 41 L49 33" fill="none" stroke="#1c1915" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="i-seal" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="26" fill="#b8502e"/>
+      <circle cx="40" cy="40" r="17" fill="none" stroke="#f6f1e8" stroke-width="2"/>
+      <path d="M31 41 L37 47 L50 33" fill="none" stroke="#f6f1e8" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-list" viewBox="0 0 80 80">
+      <rect x="22" y="16" width="36" height="52" rx="3" fill="#fffdf8" stroke="#1c1915" stroke-width="2.5"/>
+      <rect x="32" y="10" width="16" height="10" rx="2" fill="#b8502e"/>
+      <path d="M30 32 H50 M30 42 H50 M30 52 H44" stroke="#c9bfb0" stroke-width="2"/>
+      <circle cx="30" cy="32" r="1.5" fill="#1e4d3a"/>
+    </symbol>
+    <symbol id="i-note" viewBox="0 0 80 80">
+      <path d="M18 14 H50 L62 26 V66 H18 Z" fill="#fffdf8" stroke="#1c1915" stroke-width="2.5"/>
+      <path d="M50 14 V26 H62" fill="none" stroke="#1c1915" stroke-width="2.5"/>
+      <path d="M26 38 H50 M26 48 H46" stroke="#c9bfb0" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 80 80">
+      <rect x="20" y="36" width="40" height="30" rx="4" fill="#1e4d3a"/>
+      <path d="M28 36 V26 a12 12 0 0 1 24 0 V36" fill="none" stroke="#1c1915" stroke-width="4"/>
+      <circle cx="40" cy="50" r="3" fill="#f3e2b8"/>
+    </symbol>
+    <symbol id="i-disk" viewBox="0 0 80 80">
+      <rect x="8" y="26" width="64" height="34" rx="4" fill="#d9d3c7" stroke="#1c1915" stroke-width="2.5"/>
+      <rect x="16" y="34" width="26" height="8" rx="1" fill="#1e4d3a"/>
+      <rect x="16" y="46" width="16" height="4" fill="#8a8175"/>
+      <circle cx="58" cy="43" r="5" fill="#f6f1e8" stroke="#1c1915" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-card" viewBox="0 0 80 80">
+      <path d="M26 14 H54 V62 a4 4 0 0 1 -4 4 H30 a4 4 0 0 1 -4 -4 Z" fill="#c47a55" stroke="#1c1915" stroke-width="2"/>
+      <path d="M26 22 H34 V14" fill="#f6f1e8" stroke="#1c1915" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-box" viewBox="0 0 80 80">
+      <rect x="12" y="18" width="56" height="46" rx="4" fill="none" stroke="#1c1915" stroke-width="2.5"/>
+      <rect x="20" y="28" width="16" height="16" fill="#1e4d3a"/>
+      <rect x="42" y="28" width="16" height="16" fill="#8c4a32"/>
+      <rect x="20" y="48" width="38" height="6" fill="#e3dacb"/>
+    </symbol>
+    <symbol id="i-mailbox" viewBox="0 0 80 80">
+      <path d="M14 36 H66 V52 a14 14 0 0 1 -14 14 H28 a14 14 0 0 1 -14 -14 Z" fill="#1e4d3a"/>
+      <rect x="36" y="62" width="8" height="10" fill="#1c1915"/>
+      <rect x="58" y="28" width="4" height="16" fill="#b8502e"/>
+      <rect x="54" y="26" width="12" height="4" fill="#b8502e"/>
+      <path d="M22 44 H40" stroke="#f6f1e8" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 80 80">
+      <rect x="18" y="24" width="44" height="34" rx="3" fill="#f4e1c4" stroke="#1c1915" stroke-width="2"/>
+      <path d="M18 34 H62" stroke="#1c1915" stroke-width="2"/>
+      <path d="M28 46 H52 M28 52 H44" stroke="#8a8175" stroke-width="1.6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- PAGE 1 -->
+<section class="page cover">
+  <div class="kicker">A picture guide</div>
+  <h1>Your mail,<br>at home</h1>
+  <p class="deck">What an email server is, explained with pictures, for someone starting from zero. Then the plan for running one on a Raspberry Pi.</p>
+
+  <div class="poster">
+    <div class="poster-card">
+      <svg class="ico" width="120" height="120" viewBox="0 0 80 80"><use href="#i-globe" xlink:href="#i-globe"/></svg>
+      <b>Everyone else</b>
+      <span>Gmail, Outlook, a friend’s phone</span>
+    </div>
+    <div class="poster-link">
+      <svg width="70" height="28" viewBox="0 0 70 28" aria-hidden="true">
+        <line x1="2" y1="14" x2="58" y2="14" stroke="#d7e6dd" stroke-width="2"/>
+        <polygon points="56,8 68,14 56,20" fill="#d7e6dd"/>
+      </svg>
+      they deliver here
+    </div>
+    <div class="poster-card">
+      <svg class="ico" width="120" height="120" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg>
+      <b>Front desk</b>
+      <span>A rented computer with a public address</span>
+    </div>
+    <div class="poster-link">
+      <svg width="70" height="28" viewBox="0 0 70 28" aria-hidden="true">
+        <line x1="2" y1="14" x2="58" y2="14" stroke="#d7e6dd" stroke-width="2" stroke-dasharray="4 3"/>
+        <polygon points="56,8 68,14 56,20" fill="#d7e6dd"/>
+      </svg>
+      private tunnel
+    </div>
+    <div class="poster-card">
+      <svg class="ico" width="120" height="120" viewBox="0 0 80 80"><use href="#i-house" xlink:href="#i-house"/></svg>
+      <b>Your house</b>
+      <span>A Raspberry Pi holds the mailbox</span>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact">
+      <div class="n">1</div>
+      <p>The letters live on the small computer at home.</p>
+    </div>
+    <div class="fact">
+      <div class="n">2</div>
+      <p>A rented computer is the door the rest of the world uses.</p>
+    </div>
+    <div class="fact">
+      <div class="n">3</div>
+      <p>Your phone stays a phone. It reads the mail. It does not store the master copy.</p>
+    </div>
+  </div>
+
+  <p class="cover-quote">The Pi at home keeps the mail. A rented computer with a steady public address is the door. A private tunnel connects them.</p>
+
+  <footer class="foot"><span>Planning guide · nothing to install yet</span><span>1 / 12</span></footer>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+  <div class="kicker">Start here</div>
+  <h2>Email is a letter</h2>
+  <p class="lead">An email server is the room where letters are kept. Your phone is the window you look through. This guide is about the room.</p>
+
+  <div class="pair">
+    <div class="card">
+      <div class="role">On paper</div>
+      <h3>A letter in a mailbox</h3>
+      <div class="mini-steps">
+        <div class="mini-step"><div class="bubble">1</div><p>You write a letter and put a street address on it.</p></div>
+        <div class="mini-step"><div class="bubble">2</div><p>The post office looks up that street.</p></div>
+        <div class="mini-step"><div class="bubble">3</div><p>The letter waits in a mailbox until someone opens it.</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="role">On a computer</div>
+      <h3>The same three steps</h3>
+      <div class="mini-steps">
+        <div class="mini-step"><div class="bubble brick">1</div><p>You write in a mail app and put an email address on it.</p></div>
+        <div class="mini-step"><div class="bubble brick">2</div><p>A worldwide address book looks up the name after the @.</p></div>
+        <div class="mini-step"><div class="bubble brick">3</div><p>The letter waits on a mail computer until a phone fetches it.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="address">
+    <h3>An address has two halves</h3>
+    <div class="addr-row">
+      <div class="addr-chip">
+        <div class="who">The person</div>
+        <div class="big">alex</div>
+        <p>One mailbox, with that person’s letters inside.</p>
+      </div>
+      <div class="at">@</div>
+      <div class="addr-chip">
+        <div class="who">The domain</div>
+        <div class="big">example.com</div>
+        <p>The name you own. Like the street.</p>
+      </div>
+    </div>
+    <div class="addr-row" style="margin-top:0.1in">
+      <div class="addr-chip brick" style="flex:1">
+        <div class="who">The building, which is a different name</div>
+        <div class="big">mail.example.com</div>
+        <p>The computer that handles mail for the street. People write to alex@example.com. Computers walk to mail.example.com.</p>
+      </div>
+    </div>
+    <p class="addr-note">example.com is a made-up name reserved for stories like this one. Yours will be a name you choose and buy.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>2 / 12</span></footer>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+  <div class="kicker">The cast</div>
+  <h2>Four jobs, four different things</h2>
+  <p class="lead">These get mixed together. They are four separate roles. The pictures on the later pages use the same shapes.</p>
+
+  <div class="cast" style="margin-top:0.16in">
+    <div class="card">
+      <svg class="ico" width="42" height="42" viewBox="0 0 80 80"><use href="#i-person" xlink:href="#i-person"/></svg>
+      <div><b>Alex</b><p>You, in this story.</p></div>
+    </div>
+    <div class="card">
+      <svg class="ico" width="42" height="42" viewBox="0 0 80 80"><use href="#i-sam" xlink:href="#i-sam"/></svg>
+      <div><b>Sam</b><p>A friend who uses Gmail.</p></div>
+    </div>
+    <div class="card">
+      <svg class="ico" width="42" height="42" viewBox="0 0 80 80"><use href="#i-envelope" xlink:href="#i-envelope"/></svg>
+      <div><b>The letter</b><p>One email, traveling.</p></div>
+    </div>
+  </div>
+
+  <div class="jobs">
+    <div class="job">
+      <svg class="ico" width="74" height="74" viewBox="0 0 80 80"><use href="#i-phone" xlink:href="#i-phone"/></svg>
+      <div>
+        <h3>The window</h3>
+        <p>The phone or laptop where you read and write. It keeps a copy for you to look at. The master letters live somewhere else.</p>
+        <span class="tag">Your apps, unchanged</span>
+      </div>
+    </div>
+    <div class="job">
+      <svg class="ico" width="74" height="74" viewBox="0 0 80 80"><use href="#i-house" xlink:href="#i-house"/></svg>
+      <div>
+        <h3>The room</h3>
+        <p>The server. A computer that stays on and keeps every letter. In this plan, that computer is a Raspberry Pi in your house.</p>
+        <span class="tag">This is the email server</span>
+      </div>
+    </div>
+    <div class="job">
+      <svg class="ico" width="74" height="74" viewBox="0 0 80 80"><use href="#i-book" xlink:href="#i-book"/></svg>
+      <div>
+        <h3>The address book</h3>
+        <p>The internet’s phone book, called DNS. One line in it says where letters for your domain should be delivered.</p>
+        <span class="tag">That line is called MX</span>
+      </div>
+    </div>
+    <div class="job">
+      <svg class="ico" width="74" height="74" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg>
+      <div>
+        <h3>The front door</h3>
+        <p>The public address other companies will actually walk up to. It needs to be steady, reachable, and labeled with the right name.</p>
+        <span class="tag">Usually a rented computer</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>The whole project, in one line.</b>
+    <p>Put the room in your house. Put the front door on a rented computer that the world can find. Connect them with a private tunnel.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>3 / 12</span></footer>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+  <div class="kicker">The hard part</div>
+  <h2>A house is a fine room and a poor front door</h2>
+  <p class="lead">The Pi can keep letters. That part is ordinary. Other companies decide whether to hand you a letter, or accept one from you, based on the door.</p>
+
+  <div class="scene">
+    <div class="scene-label">
+      <svg class="ico" width="64" height="64" viewBox="0 0 80 80"><use href="#i-house" xlink:href="#i-house"/></svg>
+      <b>Your house</b>
+      <span>Pi, mailbox, letters</span>
+    </div>
+    <div class="wall"><i>LOCKED</i></div>
+    <div class="scene-label">
+      <svg class="ico" width="64" height="64" viewBox="0 0 80 80"><use href="#i-globe" xlink:href="#i-globe"/></svg>
+      <b>The street</b>
+      <span>Home internet sits between</span>
+    </div>
+    <div class="wall"><i>UNTRUSTED</i></div>
+    <div class="scene-label">
+      <svg class="ico" width="64" height="64" viewBox="0 0 80 80"><use href="#i-sam" xlink:href="#i-sam"/></svg>
+      <b>Gmail</b>
+      <span>Will it accept the letter?</span>
+    </div>
+  </div>
+
+  <div class="reasons">
+    <div class="reason">
+      <div class="n">1</div>
+      <h3>The mail door is often locked</h3>
+      <p>Home internet companies often block the door computers use for mail. If that door is shut, nobody can deliver, and you cannot send.</p>
+    </div>
+    <div class="reason">
+      <div class="n">2</div>
+      <h3>The address moves, or is shared</h3>
+      <p>A home address can change. Sometimes many houses share one address, so there is no door of your own on the street.</p>
+    </div>
+    <div class="reason">
+      <div class="n">3</div>
+      <h3>The name on the door does not match</h3>
+      <p>Receivers ask, “Who lives at this address?” They want the answer to be mail.example.com. Home providers almost never publish that.</p>
+    </div>
+  </div>
+
+  <div class="checks">
+    <h3>Four checks, before any software</h3>
+    <div class="check">
+      <div class="num" style="width:0.28in;height:0.28in;font-size:11pt">1</div>
+      <b>Is the address shared?</b>
+      <p>Compare the address your router shows with the address a “what is my IP” site shows. If they differ, the world cannot knock on your house.</p>
+    </div>
+    <div class="check">
+      <div class="num" style="width:0.28in;height:0.28in;font-size:11pt">2</div>
+      <b>Can outsiders reach the mail door?</b>
+      <p>From a phone on cellular data, outside your wifi, see whether your house answers on the mail door.</p>
+    </div>
+    <div class="check">
+      <div class="num" style="width:0.28in;height:0.28in;font-size:11pt">3</div>
+      <b>Can the Pi send outward?</b>
+      <p>From the Pi, see whether it can open the mail door of a big mail company. Many home lines block this too.</p>
+    </div>
+    <div class="check">
+      <div class="num" style="width:0.28in;height:0.28in;font-size:11pt">4</div>
+      <b>Will they print your name?</b>
+      <p>Ask the internet company to publish your address as mail.example.com. This is called reverse DNS. Home companies rarely agree.</p>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>4 / 12</span></footer>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+  <div class="kicker">The plan</div>
+  <h2>A front desk downtown, a mailbox at home</h2>
+  <p class="lead">Rent a tiny computer in a data center. It has a public address that stays put, and its company will print the matching name. Your Pi keeps the letters and opens a private tunnel out to that desk.</p>
+
+  <div class="map">
+    <div class="station">
+      <svg class="ico" width="68" height="68" viewBox="0 0 80 80"><use href="#i-sam" xlink:href="#i-sam"/></svg>
+      <div>
+        <h3>Sam, and every other mail company</h3>
+        <p>They only need one public place to walk up to.</p>
+      </div>
+    </div>
+    <div class="connector">They look up example.com and deliver to the front desk</div>
+    <div class="station desk">
+      <svg class="ico" width="68" height="68" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg>
+      <div>
+        <h3>Front desk</h3>
+        <p>A small rented computer. Steady address. Name on the door matches.</p>
+        <span class="name">mail.example.com</span>
+      </div>
+    </div>
+    <div class="connector">Private tunnel. The Pi opens it from inside the house, so visitors never have to find you.</div>
+    <div class="station home">
+      <svg class="ico" width="68" height="68" viewBox="0 0 80 80"><use href="#i-pi" xlink:href="#i-pi"/></svg>
+      <div>
+        <h3>Raspberry Pi, at home</h3>
+        <p>The only mailbox. Every letter is filed here, on a real disk.</p>
+      </div>
+    </div>
+    <div class="connector">When you open your mail app, the phone fetches a copy</div>
+    <div class="station">
+      <svg class="ico" width="68" height="68" viewBox="0 0 80 80"><use href="#i-phone" xlink:href="#i-phone"/></svg>
+      <div>
+        <h3>Your phone</h3>
+        <p>Same apps you use now. They talk to the front desk, which passes them through to the Pi.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="remember">
+    <b>If the Pi is off, the letters wait at the desk and come home when it is back.</b>
+    <p>The desk passes mail through. It is not a second mailbox. A few homes can skip the desk, if the four checks on the previous page all pass. Most homes use the desk.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>5 / 12</span></footer>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+  <div class="kicker">Follow one letter</div>
+  <h2>Sam writes to Alex</h2>
+  <p class="lead">Sam’s letter is addressed to alex@example.com. Watch where it walks.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-pen" xlink:href="#i-pen"/></svg></div>
+      <div>
+        <h3>Sam writes the letter</h3>
+        <p>On a phone, in Gmail. The address is alex@example.com. Sam taps send.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-book" xlink:href="#i-book"/></svg></div>
+      <div>
+        <h3>Gmail looks up the street</h3>
+        <p>The address book says mail for example.com goes to mail.example.com, the front desk. That line in the book is called an MX record.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg></div>
+      <div>
+        <h3>The letter arrives at the front desk</h3>
+        <p>Gmail knocks on the public mail door. The desk accepts the letter because it is addressed to someone at example.com.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-tunnel" xlink:href="#i-tunnel"/></svg></div>
+      <div>
+        <h3>It crosses the private tunnel</h3>
+        <p>The desk walks the letter through the hallway to the Pi. The hallway is called WireGuard. Your house can open it from the inside.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-mailbox" xlink:href="#i-mailbox"/></svg></div>
+      <div>
+        <h3>The Pi files it</h3>
+        <p>A junk-mail sorter scores it. The letter is stored on the disk at home. Alex’s phone picks up a copy the next time the app is opened.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>What Alex notices.</b>
+    <p>A new message, in the same kind of app as always. The tunnel, the desk, and the Pi stay out of sight.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>6 / 12</span></footer>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page">
+  <div class="kicker">Follow one letter</div>
+  <h2>Alex writes back</h2>
+  <p class="lead">Sending is the direction that gets people into trouble. Gmail trusts a letter when the address it came from matches the name on the door.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-phone" xlink:href="#i-phone"/></svg></div>
+      <div>
+        <h3>Alex taps send</h3>
+        <p>The phone connects to a sending door and gives a password. Strangers cannot use this door. The password proves it is Alex.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-pi" xlink:href="#i-pi"/></svg></div>
+      <div>
+        <h3>The Pi takes the letter</h3>
+        <p>A copy is filed at home, in Sent. The Pi prepares the letter for the outside world.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-seal" xlink:href="#i-seal"/></svg></div>
+      <div>
+        <h3>The Pi stamps a seal</h3>
+        <p>The seal is called DKIM. Later, Gmail can check the seal and see the letter really comes from example.com.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg></div>
+      <div>
+        <h3>The front desk carries it out</h3>
+        <p>The Pi hands the letter to the desk. The desk delivers it from the public address, the one whose name matches mail.example.com.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div class="picbox"><svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-list" xlink:href="#i-list"/></svg></div>
+      <div>
+        <h3>Gmail checks the guest list</h3>
+        <p>The guest list is called SPF. It says the front desk is allowed to send for example.com. The house address is not on that list, on purpose.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>A brand-new door is a stranger.</b>
+    <p>The first letters to Gmail sometimes land in spam. Ordinary mail, sent and answered like a person, is how that door earns a reputation. Bulk mail is a different project and does not belong here.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>7 / 12</span></footer>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page">
+  <div class="kicker">Three doors</div>
+  <h2>A computer has numbered doors</h2>
+  <p class="lead">A port is a numbered door. Mail uses three. Each one has a different visitor.</p>
+
+  <div class="doors">
+    <div class="door">
+      <div class="arch">
+        <svg class="ico" width="54" height="54" viewBox="0 0 80 80"><use href="#i-envelope" xlink:href="#i-envelope"/></svg>
+        <div class="port">25</div>
+      </div>
+      <h3>Public mail slot</h3>
+      <p>Other companies deliver here. The door accepts letters for people at your domain, and turns away mail that asks to be passed on to someone else.</p>
+    </div>
+    <div class="door">
+      <div class="arch brick">
+        <svg class="ico" width="54" height="54" viewBox="0 0 80 80"><use href="#i-lock" xlink:href="#i-lock"/></svg>
+        <div class="port">587</div>
+      </div>
+      <h3>Your sending window</h3>
+      <p>Alex’s phone uses this door to hand over a new letter. It asks for a username and a password. The trip is locked so nobody on the way can read it.</p>
+    </div>
+    <div class="door">
+      <div class="arch green">
+        <svg class="ico" width="54" height="54" viewBox="0 0 80 80"><use href="#i-phone" xlink:href="#i-phone"/></svg>
+        <div class="port">993</div>
+      </div>
+      <h3>The reading room</h3>
+      <p>The phone uses this door to fetch letters. It also asks for a password, and the trip is locked. This way of reading is called IMAP.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>In this plan, all three doors are on the front desk.</b>
+    <p>The desk passes each visitor through the tunnel to the Pi. The Pi is the one who files the letter, checks the password, and keeps the mailbox. The lock on the trip is a certificate: a document that says “this really is mail.example.com.”</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>8 / 12</span></footer>
+</section>
+
+<!-- PAGE 9 -->
+<section class="page">
+  <div class="kicker">Words you will see</div>
+  <h2>The same ideas, with their real names</h2>
+  <p class="lead">You already met these in the story. This page is the translation, for when a settings screen uses the short name.</p>
+
+  <div class="words">
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-house" xlink:href="#i-house"/></svg>
+      <div><b>Server</b><p>A computer that stays on and waits for requests. Here, the room where mail is kept.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-pi" xlink:href="#i-pi"/></svg>
+      <div><b>Raspberry Pi</b><p>A small, cheap, quiet computer. Ours lives at home and holds the mailbox.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-box" xlink:href="#i-box"/></svg>
+      <div><b>Docker</b><p>A box around a program, with everything that program needs. The mail program runs in one box.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg>
+      <div><b>VPS, the front desk</b><p>A small computer you rent in a data center. “VPS” is the rental name. We call it the front desk.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-book" xlink:href="#i-book"/></svg>
+      <div><b>DNS and MX</b><p>DNS is the address book. MX is the line that says where mail for your domain goes.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-tunnel" xlink:href="#i-tunnel"/></svg>
+      <div><b>WireGuard</b><p>The tool that builds the private tunnel between the Pi and the front desk.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-list" xlink:href="#i-list"/></svg>
+      <div><b>SPF</b><p>The public guest list. It names who may send mail for your domain. Ours names the front desk.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-seal" xlink:href="#i-seal"/></svg>
+      <div><b>DKIM</b><p>The seal the Pi stamps on outgoing letters. Receivers check the seal against a public key in the address book.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-note" xlink:href="#i-note"/></svg>
+      <div><b>DMARC</b><p>A public note that says what to do when the guest list or the seal fails. We start by asking for reports only.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-lock" xlink:href="#i-lock"/></svg>
+      <div><b>TLS certificate</b><p>The lock. It proves the server is mail.example.com and keeps the letter private on the wire.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-globe" xlink:href="#i-globe"/></svg>
+      <div><b>Reverse DNS</b><p>The question “who lives at this address?” answered with mail.example.com. The front desk’s company sets this.</p></div>
+    </div>
+    <div class="word">
+      <svg class="ico" width="40" height="40" viewBox="0 0 80 80"><use href="#i-disk" xlink:href="#i-disk"/></svg>
+      <div><b>Mailbox</b><p>One person’s pile of letters on the disk. alex@example.com is one mailbox.</p></div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>9 / 12</span></footer>
+</section>
+
+<!-- PAGE 10 -->
+<section class="page">
+  <div class="kicker">The two machines</div>
+  <h2>What sits where</h2>
+  <p class="lead">Two computers, two jobs. Mail is stored in one place.</p>
+
+  <div class="split">
+    <div class="place home">
+      <div class="ey" style="color:#1e4d3a">At home · green</div>
+      <h3>The Raspberry Pi</h3>
+      <ul>
+        <li>Keeps every mailbox.</li>
+        <li>Checks Alex’s password.</li>
+        <li>Stamps the seal on outgoing letters.</li>
+        <li>Sorts junk mail.</li>
+        <li>Opens the tunnel out to the desk.</li>
+      </ul>
+      <div class="place-art">
+        <svg class="ico" width="78" height="78" viewBox="0 0 80 80"><use href="#i-house" xlink:href="#i-house"/></svg>
+        <svg class="ico" width="78" height="78" viewBox="0 0 80 80"><use href="#i-pi" xlink:href="#i-pi"/></svg>
+        <svg class="ico" width="78" height="78" viewBox="0 0 80 80"><use href="#i-mailbox" xlink:href="#i-mailbox"/></svg>
+      </div>
+    </div>
+    <div class="place desk">
+      <div class="ey" style="color:#8c4a32">Downtown · brick</div>
+      <h3>The front desk</h3>
+      <ul>
+        <li>Owns the public name and address.</li>
+        <li>Has the three doors: 25, 587, and 993.</li>
+        <li>Passes visitors through the tunnel.</li>
+        <li>Delivers Alex’s letters to Gmail and the rest.</li>
+        <li>Holds new letters only while the Pi is off.</li>
+      </ul>
+      <div class="place-art">
+        <svg class="ico" width="86" height="86" viewBox="0 0 80 80"><use href="#i-building" xlink:href="#i-building"/></svg>
+        <svg class="ico" width="78" height="78" viewBox="0 0 80 80"><use href="#i-tunnel" xlink:href="#i-tunnel"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="helpers">
+    <h3>Inside the Pi, one Docker box with four helpers</h3>
+    <div class="helper-grid">
+      <div class="helper">
+        <b>Postfix</b>
+        <span>Receptionist</span>
+        <p>Takes letters in and hands letters out.</p>
+      </div>
+      <div class="helper">
+        <b>Dovecot</b>
+        <span>Filing clerk</span>
+        <p>Lets the phone read the mailbox.</p>
+      </div>
+      <div class="helper">
+        <b>Rspamd</b>
+        <span>Junk sorter</span>
+        <p>Scores spam and stamps the seal.</p>
+      </div>
+      <div class="helper">
+        <b>Fail2ban</b>
+        <span>The guard</span>
+        <p>Slows people who guess passwords.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="diskrow">
+    <div class="disk">
+      <svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-card" xlink:href="#i-card"/></svg>
+      <div>
+        <h3>The little card</h3>
+        <p>Comes with the Pi and runs the system. Letters are written all day, and that wears a little card out. The card keeps the operating system.</p>
+      </div>
+    </div>
+    <div class="disk">
+      <svg class="ico" width="52" height="52" viewBox="0 0 80 80"><use href="#i-disk" xlink:href="#i-disk"/></svg>
+      <div>
+        <h3>A USB disk</h3>
+        <p>A real SSD, plugged into the Pi. The mailboxes, the Docker box, and the seal’s private key live here. 128 GB is plenty for a household.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>10 / 12</span></footer>
+</section>
+
+<!-- PAGE 11 -->
+<section class="page">
+  <div class="kicker">The order</div>
+  <h2>Build it in this order</h2>
+  <p class="lead">Each step has something you can see. Stay on a step until that thing is true. The mail program comes after the door works.</p>
+
+  <div class="order">
+    <div class="ord">
+      <div class="num">1</div>
+      <div>
+        <b>Learn what the home line allows</b>
+        <p>Do the four checks. They decide whether you need the front desk. On a typical home line, you do.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">2</div>
+      <div>
+        <b>Choose a domain, and a desk</b>
+        <p>Buy a name whose address book you can edit. Rent the front desk only from a company that will open the mail door and print the matching name.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">3</div>
+      <div>
+        <b>Give the Pi a real disk</b>
+        <p>Plug in the USB SSD. Restart the Pi and confirm the disk is still there. Letters will be written to that disk.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">4</div>
+      <div>
+        <b>Start the mail box, in private</b>
+        <p>Run the Docker program on the Pi. Make two test mailboxes. Send a letter from one to the other, inside the house, before the world is involved.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">5</div>
+      <div>
+        <b>Publish the address book and the lock</b>
+        <p>Add the MX line, the guest list, the seal’s public key, and the DMARC note. Get the certificate for mail.example.com.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">6</div>
+      <div>
+        <b>Send one letter to a real Gmail account</b>
+        <p>Read the details Gmail shows. The sending address should be the front desk. Then reply, and watch that reply land on the Pi.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">7</div>
+      <div>
+        <b>Put it on your phone</b>
+        <p>Add the account in the normal mail app. Reading uses door 993. Sending uses door 587. Both ask for the password.</p>
+      </div>
+    </div>
+    <div class="ord">
+      <div class="num">8</div>
+      <div>
+        <b>Make a backup, and open the backup</b>
+        <p>Copy the disk’s mail, the account list, and the seal’s private key somewhere else. Restore that copy once, and open a letter from it, before you depend on it.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>11 / 12</span></footer>
+</section>
+
+<!-- PAGE 12 -->
+<section class="page">
+  <div class="kicker">Before we build</div>
+  <h2>Four decisions, then we can start</h2>
+  <p class="lead">The pictures stay the same. These answers change the details.</p>
+
+  <div class="qs">
+    <div class="q">
+      <div class="num">1</div>
+      <div>
+        <h3>What domain do you want?</h3>
+        <p>You need a DNS host that lets you edit MX and TXT records. SPF, DKIM, and DMARC are all TXT records.</p>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">2</div>
+      <div>
+        <h3>Is a small rented computer okay?</h3>
+        <p>It is often a few dollars a month. On a normal home connection, this is the decision that lets mail arrive and be trusted.</p>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">3</div>
+      <div>
+        <h3>Who gets a mailbox?</h3>
+        <p>One person is the simple start. A household means a password and a pile of letters for each person, plus a backup that matters.</p>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">4</div>
+      <div>
+        <h3>Is the Pi free for this job?</h3>
+        <p>A Pi 4 or 5 with 4 GB of memory is enough when mail is the main thing it does. If it already runs other things, 8 GB is the comfortable size.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="later">
+    <h3>After the mailbox works</h3>
+    <div class="chips">
+      <span class="chip">Reading mail in a web browser</span>
+      <span class="chip">A second domain</span>
+      <span class="chip">Filters and folders</span>
+      <span class="chip">Stricter DMARC, once reports look clean</span>
+    </div>
+    <p class="small" style="margin-top:0.08in">A catch-all address accepts mail for any name at your domain, and it fills with junk. Mailing lists are a different system. Both wait.</p>
+  </div>
+
+  <div class="close">
+    <h3>The sentence to keep</h3>
+    <p>The Pi at home keeps the mail. A rented computer with a steady public address is the door. A private tunnel connects them. Your phone works the way it does today.</p>
+  </div>
+
+  <footer class="foot"><span>Your mail, at home</span><span>12 / 12</span></footer>
+</section>
+
+</body>
+</html>
